@@ -21,7 +21,7 @@ publishing {
         maven(MavenPublication) {
             groupId 'com.ttsudio.alphaback'
             artifactId 'alphaback-model'
-            version '0.1.0'
+            version '0.1.1'
             from components.java
         }
     }
@@ -46,6 +46,8 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation libs.guava
+
+    implementation 'org.projectlombok:lombok:1.18.42'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
