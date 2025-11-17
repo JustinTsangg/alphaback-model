@@ -8,11 +8,33 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+    id 'maven-publish'
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.ttsudio.alphaback'
+            artifactId 'alphaback-model'
+            version '0.1.0'
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/JustinTsangg/alphaback-model")
+            credentials {
+                username = System.getenv("GITHUB_USER")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
 
 dependencies {
